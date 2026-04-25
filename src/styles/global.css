@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-nvim-bg: #282828;
+  --color-nvim-fg: #ebdbb2;
+  --color-nvim-gray: #928374;
+  --color-nvim-blue: #83a598;
+  --color-nvim-green: #b8bb26;
+  --color-nvim-yellow: #fabd2f;
+  --color-nvim-orange: #fe8019;
+  --color-nvim-red: #fb4934;
+  --color-nvim-statusline: #3c3836;
+}
+
+body {
+  background-color: var(--color-nvim-bg);
+  color: var(--color-nvim-fg);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.025em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-nvim-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-nvim-gray);
+  border-radius: 4px;
+}

@@ -1,17 +1,55 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Horizon">
+  <div class="flex flex-col items-center justify-center h-full">
+    <h1 class="text-4xl font-bold mb-8 text-nvim-blue">HORIZON</h1>
+    <div class="text-center">
+      <p class="mb-4">version 0.0.1</p>
+      <p class="mb-2">Horizon is a community-driven wiki for nerds, by nerds</p>
+      <a
+        href="https://github.com/xgovernor/horizon.git"
+        class="mb-4 hover:underline"
+        >github.com/xgovernor/horizon</a
+      >
+      <div class="p-8 text-nvim-green text-left">
+        <p>
+          type :about<span class="text-nvim-blue">&lt;Enter&gt;</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+          view about information
+        </p>
+        <p>
+          type :blog<span class="text-nvim-blue">&lt;Enter&gt;</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+          view blog posts
+        </p>
+        <p>
+          type :contact<span class="text-nvim-blue">&lt;Enter&gt;</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to view
+          contact details
+        </p>
+        <br />
+        <p>
+          type /<span class="text-nvim-blue">&lt;Search term&gt;</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+          search posts
+        </p>
+        <br />
+        <p>
+          type :h<span class="text-nvim-blue">&lt;Enter&gt;</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+          view the <a
+            href="/help"
+            class="underline text-nvim-blue hover:text-blue-800">help</a
+          > page
+        </p>
+        <p>
+          type :q<span class="text-nvim-blue">&lt;Enter&gt;</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
+          exit
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
