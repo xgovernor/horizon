@@ -9,46 +9,66 @@ import Layout from "../layouts/Layout.astro";
       <p class="mb-4">version 0.0.1</p>
       <p class="mb-2">Horizon is a community-driven wiki for nerds, by nerds</p>
       <a
-        href="https://github.com/xgovernor/horizon.git"
+        href="https://github.com/xgovernor/horizon"
         class="mb-4 hover:underline"
-        >github.com/xgovernor/horizon</a
+        target="_blank"
+        rel="noopener noreferrer">github.com/xgovernor/horizon</a
       >
-      <div class="p-8 text-nvim-green text-left">
-        <p>
-          type :about<span class="text-nvim-blue">&lt;Enter&gt;</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-          view about information
-        </p>
-        <p>
-          type :blog<span class="text-nvim-blue">&lt;Enter&gt;</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-          view blog posts
-        </p>
-        <p>
-          type :contact<span class="text-nvim-blue">&lt;Enter&gt;</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to view
-          contact details
-        </p>
-        <br />
-        <p>
-          type /<span class="text-nvim-blue">&lt;Search term&gt;</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-          search posts
-        </p>
-        <br />
-        <p>
-          type :h<span class="text-nvim-blue">&lt;Enter&gt;</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-          view the <a
-            href="/help"
-            class="underline text-nvim-blue hover:text-blue-800">help</a
-          > page
-        </p>
-        <p>
-          type :q<span class="text-nvim-blue">&lt;Enter&gt;</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
-          exit
-        </p>
+
+      <!-- Command hints: same vibe as old, aligned with grid instead of &nbsp; -->
+      <div class="p-8 text-nvim-green text-left font-mono text-sm">
+        <div class="grid gap-y-1" style="grid-template-columns: auto 1fr">
+          <span
+            >type <span class="text-nvim-green">:about</span><span
+              class="text-nvim-blue">&lt;Enter&gt;</span
+            ></span
+          >
+          <span class="pl-8 text-nvim-green">to view about information</span>
+
+          <span
+            >type <span class="text-nvim-green">:blog</span><span
+              class="text-nvim-blue">&lt;Enter&gt;</span
+            ></span
+          >
+          <span class="pl-8 text-nvim-green">to view blog posts</span>
+
+          <span
+            >type <span class="text-nvim-green">:contact</span><span
+              class="text-nvim-blue">&lt;Enter&gt;</span
+            ></span
+          >
+          <span class="pl-8 text-nvim-green">to view contact details</span>
+
+          <span class="col-span-2">&nbsp;</span>
+
+          <span
+            >type <span class="text-nvim-green">/</span><span
+              class="text-nvim-blue">&lt;Search term&gt;</span
+            ></span
+          >
+          <span class="pl-8 text-nvim-green">to search posts</span>
+
+          <span class="col-span-2">&nbsp;</span>
+
+          <span
+            >type <span class="text-nvim-green">:h</span><span
+              class="text-nvim-blue">&lt;Enter&gt;</span
+            ></span
+          >
+          <span class="pl-8 text-nvim-green"
+            >to view the <a
+              href="/help"
+              class="underline text-nvim-blue hover:text-blue-800">help</a
+            > page</span
+          >
+
+          <span
+            >type <span class="text-nvim-green">:q</span><span
+              class="text-nvim-blue">&lt;Enter&gt;</span
+            ></span
+          >
+          <span class="pl-8 text-nvim-green">to exit</span>
+        </div>
       </div>
     </div>
   </div>

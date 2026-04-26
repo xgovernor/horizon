@@ -11,13 +11,13 @@ blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
     {
       blogPosts.map((post, index) => (
         <li
-          class="mb-3 grid grid-cols-[2fr_3fr_1fr] gap-4 items-start blog-item"
+          class="mb-1 grid grid-cols-[2fr_3fr_1fr] gap-4 items-start blog-item"
           data-index={index}
           data-href={`/blog/${post.id}`}
         >
           <a
             href={`/blog/${post.id}`}
-            class="text-nvim-blue text-[15px] hover:underline font-semibold"
+            class="text-nvim-blue text-sm hover:underline font-medium"
           >
             {post.data.title}
           </a>
@@ -47,7 +47,11 @@ blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   .blog-item.active {
     @apply border-l-4 pl-3;
-    background-color: color-mix(in srgb, var(--color-nvim-blue) 20%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-nvim-blue) 20%,
+      transparent
+    );
     border-color: var(--color-nvim-blue);
   }
 

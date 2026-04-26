@@ -1,14 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Contact">
-  <div class="flex flex-col items-center justify-center h-full">
-    <h1 class="text-4xl font-bold mb-8 text-nvim-blue">Get in touch!</h1>
+  <div class="flex flex-col items-center justify-center h-full gap-6">
     <div class="text-center">
-      <p class="mb-4">version 0.0.3</p>
-      <p class="mb-2">If you have any questions or would like to get in touch, please use the contact information below:</p>
-      <p class="mb-4">hi [at] albertoperdomo [dot] me</p>
+      <h1 class="text-3xl font-bold text-nvim-blue mb-1">Get in touch</h1>
+      <p class="text-nvim-gray text-sm">version 0.0.1</p>
+    </div>
+
+    <div
+      class="border border-nvim-gray rounded-sm p-8 flex flex-col gap-4 w-full max-w-sm"
+    >
+      <!-- Email -->
+      <div class="flex items-center gap-3">
+        <span
+          class="text-nvim-gray text-xs w-16 shrink-0 uppercase tracking-widest"
+          >email</span
+        >
+        <a
+          href="mailto:hi@albertoperdomo.me"
+          class="text-nvim-blue hover:underline underline-offset-4 text-sm"
+        >
+          abut1081@gmail.com
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-nvim-gray"></div>
+
+      <!-- Hint -->
+      <p class="text-nvim-gray text-xs leading-relaxed">
+        You can also navigate here with <kbd
+          class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+          >:contact</kbd
+        > from anywhere on the site.
+      </p>
     </div>
   </div>
 </Layout>

@@ -1,0 +1,18 @@
+{
+  "theme": {
+    "bg": "#282828",
+    "fg": "#ebdbb2",
+    "gray": "#928374",
+    "blue": "#83a598",
+    "green": "#b8bb26",
+    "yellow": "#fabd2f",
+    "orange": "#fe8019",
+    "red": "#fb4934",
+    "statusline": "#3c3836"
+  },
+  "ui": {
+    "fontSize": "16px",
+    "lineHeight": "1.5",
+    "sidebarWidth": "250px"
+  }
+}

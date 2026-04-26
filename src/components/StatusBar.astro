@@ -18,54 +18,67 @@
 </div>
 
 <script>
+  import { store, subscribe } from "../scripts/store.ts";
+  import type { StoreState } from "../scripts/store.ts";
+
+  const MODE_COLORS: Record<string, string> = {
+    NORMAL: "bg-nvim-green",
+    INSERT: "bg-nvim-blue",
+    VISUAL: "bg-nvim-orange",
+    COMMAND: "bg-nvim-yellow",
+    SEARCH: "bg-nvim-red",
+  };
+
+  // Module-level unsub — survives between initStatusBar calls so we can
+  // clean up the previous subscription before creating a new one.
+  let unsub: (() => void) | null = null;
+
   function initStatusBar() {
-    const statusBar = {
-      mode: document.getElementById("mode"),
-      commandLine: document.getElementById("command-line"),
-      fileInfo: document.getElementById("file-info"),
-      position: document.getElementById("position"),
+    // FIX: clean up previous subscription before re-subscribing.
+    // Without this, every page transition stacks another subscriber.
+    unsub?.();
+
+    const el = {
+      mode: document.getElementById("mode")!,
+      commandLine: document.getElementById("command-line")!,
+      fileInfo: document.getElementById("file-info")!,
+      position: document.getElementById("position")!,
     };
 
-    function updateStatusBar(
-      mode: string | undefined,
-      commandLine: string | undefined,
-      fileInfo: string | undefined,
-      position: string | undefined,
-    ) {
+    function applyState(patch: Partial<StoreState>): void {
+      const { mode, commandLine, fileInfo, position } = patch;
+
       if (mode !== undefined) {
-        statusBar.mode!.textContent = mode;
-        // Update mode colors
-        statusBar.mode!.className = "px-2 transition-colors duration-150 mr-2 ";
-        switch (mode) {
-          case "NORMAL":
-            statusBar.mode!.classList.add("bg-nvim-green", "text-nvim-bg");
-            break;
-          case "INSERT":
-            statusBar.mode!.classList.add("bg-nvim-blue", "text-nvim-bg");
-            break;
-          case "VISUAL":
-            statusBar.mode!.classList.add("bg-nvim-orange", "text-nvim-bg");
-            break;
-          case "COMMAND":
-            statusBar.mode!.classList.add("bg-nvim-yellow", "text-nvim-bg");
-            break;
-          case "SEARCH":
-            statusBar.mode!.classList.add("bg-nvim-red", "text-nvim-bg");
-            break;
-          default:
-            statusBar.mode!.classList.add("bg-nvim-gray", "text-nvim-bg");
-        }
+        el.mode.textContent = mode;
+        // Reset all color classes then apply the correct one
+        el.mode.className =
+          "px-2 transition-colors duration-150 mr-2 text-nvim-bg";
+        el.mode.classList.add(MODE_COLORS[mode] ?? "bg-nvim-gray");
       }
-      if (commandLine !== undefined)
-        statusBar.commandLine!.textContent = commandLine;
-      if (fileInfo !== undefined) statusBar.fileInfo!.textContent = fileInfo;
-      if (position !== undefined) statusBar.position!.textContent = position;
+      if (commandLine !== undefined) el.commandLine.textContent = commandLine;
+      if (fileInfo !== undefined) el.fileInfo.textContent = fileInfo;
+      if (position !== undefined) el.position.textContent = position;
     }
 
-    // Expose updateStatusBar to the global scope
-    window.updateStatusBar = updateStatusBar;
+    // Hydrate from current store state immediately — no missed-event risk
+    applyState(store as Partial<StoreState>);
+
+    // Subscribe to future changes — only re-renders what actually changed
+    unsub = subscribe((state, changed) => {
+      const patch: Partial<StoreState> = {};
+      for (const key of changed) {
+        // Safe: key is always keyof StoreState here
+        (patch as Record<string, unknown>)[key] = state[key];
+      }
+      applyState(patch);
+    });
   }
 
-  // Run the initialization when the DOM is fully loaded
-  document.addEventListener("DOMContentLoaded", initStatusBar);
+  // FIX: call directly on first load — astro:page-load only fires on
+  // subsequent View Transition navigations, not on the initial page load
+  // if View Transitions aren't enabled (or before they kick in).
+  initStatusBar();
+
+  // Re-init after each client-side page swap so DOM refs stay fresh
+  document.addEventListener("astro:page-load", initStatusBar);
 </script>

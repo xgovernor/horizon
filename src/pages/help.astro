@@ -3,41 +3,397 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Help">
-  <div class="flex flex-col items-center justify-center h-full">
-    <h1 class="text-4xl font-bold mb-8 text-nvim-blue">Help page</h1>
-    <div class="text-center">
-      <p class="mb-4">version 0.0.1</p>
-      <div class="flex flex-col text-left justify-left p-10">
-        <p class="p-4">
-          This page contains basic instructions to use this page. Some Vim key
-          bindings are enabled and can be used within the page itself, but some
-          of them don't work in all the pages since I did not considered it
-          necessary.
-        </p>
-
-        <h2 class="p-4 text-2xl font-bold text-nvim-blue">Instructions</h2>
-        <p class="ml-4">
-          <a class="font-bold">u</a>: Undo the last change, in this case, it
-          navigates up one level.
-        </p>
-        <p class="ml-4">
-          <a class="font-bold">j</a>: Move the cursor down one line.
-        </p>
-        <p class="ml-4">
-          <a class="font-bold">k</a>: Move the cursor up one line.
-        </p>
-        <p class="ml-4">
-          <a class="font-bold">gg</a>: Move the cursor to the first line of the
-          file, in this case, page.
-        </p>
-        <p class="ml-4">
-          <a class="font-bold">G</a>: Move the cursor to the last line of the
-          file, in this case, page.
-        </p>
-        <p class="ml-4">
-          <a class="font-bold">:&lt;command&gt;</a>: Executes a command.
-        </p>
-      </div>
+  <div class="max-w-2xl mx-auto py-8 px-4">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-nvim-blue mb-1">HORIZON — Help</h1>
+      <p class="text-nvim-gray text-sm">
+        version 0.0.1 &nbsp;·&nbsp; Vim-style navigation
+      </p>
     </div>
+
+    <!-- Intro -->
+    <p class="mb-8 text-sm leading-relaxed">
+      Most pages support Vim-style keybindings. Keybindings are active whenever
+      focus is not inside an input field. Press
+      <kbd
+        class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+        >Esc</kbd
+      >
+      to return to NORMAL mode from any other mode.
+    </p>
+
+    <!-- Normal Mode: Motion -->
+    <section class="mb-8">
+      <h2
+        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-nvim-fg mb-3 border-b border-nvim-gray pb-1"
+      >
+        <span
+          class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-green text-nvim-bg"
+          >NORMAL</span
+        >
+        Motion keys
+      </h2>
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >j</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Scroll down</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >k</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Scroll up</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+            >
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >g</kbd
+              >
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >g</kbd
+              >
+            </td>
+            <td class="py-1.5 align-top">Jump to top of page</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >G</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Jump to bottom of page</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >-</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Navigate up one directory level</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Mode Switching -->
+    <section class="mb-8">
+      <h2
+        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-nvim-fg mb-3 border-b border-nvim-gray pb-1"
+      >
+        <span
+          class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-green text-nvim-bg"
+          >NORMAL</span
+        >
+        Mode switching
+      </h2>
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >i</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Enter <span
+                class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-blue text-nvim-bg"
+                >INSERT</span
+              > — releases keybindings so you can type freely</td
+            >
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >v</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Enter <span
+                class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-orange text-nvim-bg"
+                >VISUAL</span
+              > — select and yank text</td
+            >
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Enter <span
+                class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-yellow text-nvim-bg"
+                >COMMAND</span
+              > — type a command and press Enter</td
+            >
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >/</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Enter <span
+                class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-red text-nvim-bg"
+                >SEARCH</span
+              > — type a term and press Enter</td
+            >
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >Esc</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Return to <span
+                class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-green text-nvim-bg"
+                >NORMAL</span
+              > from anywhere</td
+            >
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Visual Mode -->
+    <section class="mb-8">
+      <h2
+        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-nvim-fg mb-3 border-b border-nvim-gray pb-1"
+      >
+        <span
+          class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-orange text-nvim-bg"
+          >VISUAL</span
+        >
+        Keys
+      </h2>
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+            >
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >j</kbd
+              >
+              /
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >k</kbd
+              >
+            </td>
+            <td class="py-1.5 align-top">Scroll while in visual mode</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >y</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Yank (copy) selected text to clipboard</td
+            >
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >Esc</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Exit visual mode, clear selection</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Commands -->
+    <section class="mb-8">
+      <h2
+        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-nvim-fg mb-3 border-b border-nvim-gray pb-1"
+      >
+        <span
+          class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-yellow text-nvim-bg"
+          >COMMAND</span
+        >
+        Built-in commands
+      </h2>
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:blog</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Go to blog</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:about</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Go to about page</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:contact</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Go to contact page</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+            >
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:help</kbd
+              >
+              /
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:h</kbd
+              >
+            </td>
+            <td class="py-1.5 align-top">This page</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+            >
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:q</kbd
+              >
+              /
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:wq</kbd
+              >
+            </td>
+            <td class="py-1.5 align-top">Exit</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:123</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Jump to section number</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >:w</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Write — no-op on a read-only wiki</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Search -->
+    <section class="mb-8">
+      <h2
+        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-nvim-fg mb-3 border-b border-nvim-gray pb-1"
+      >
+        <span
+          class="text-xs font-bold px-1.5 py-0.5 rounded-sm bg-nvim-red text-nvim-bg"
+          >SEARCH</span
+        >
+        Usage
+      </h2>
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+            >
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >/</kbd
+              >
+              <em>term</em>
+              <kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >Enter</kbd
+              >
+            </td>
+            <td class="py-1.5 align-top">Search across all pages</td>
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >Backspace</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top"
+              >Delete last character — exits search when buffer is empty</td
+            >
+          </tr>
+          <tr>
+            <td
+              class="w-48 py-1.5 pr-4 align-top text-nvim-blue whitespace-nowrap"
+              ><kbd
+                class="inline-block bg-nvim-gray text-nvim-fg text-xs font-mono px-1.5 py-0.5 rounded border border-nvim-statusline"
+                >Esc</kbd
+              ></td
+            >
+            <td class="py-1.5 align-top">Cancel search and clear results</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </div>
 </Layout>

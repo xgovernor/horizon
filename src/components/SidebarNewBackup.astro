@@ -1,0 +1,81 @@
+---
+const pathname = Astro.url.pathname;
+const isTildePage =
+    pathname === "/" || pathname.split("/").filter(Boolean).length === 1;
+---
+
+    <div
+  id="vim-gutter"
+class="bg-nvim-bg text-nvim-gray w-10 flex-shrink-0 text-right pr-2 select-none overflow-hidden font-mono text-sm leading-5"
+    >
+    <!--Rendered by JS below — avoids hardcoded 100 and adds scroll tracking-- >
+        </div>
+
+        < script define: vars = {{ isTildePage }}>
+  const LINE_HEIGHT = 20; // matches leading-5 (1.25rem @ 16px base)
+
+const gutter = document.getElementById("vim-gutter");
+if (!gutter) throw new Error("vim-gutter not found");
+
+let currentLine = 1;
+let totalLines = 0;
+
+function lineCount() {
+    return Math.ceil(window.innerHeight / LINE_HEIGHT);
+}
+
+function render() {
+    const count = lineCount();
+    const lines = [];
+
+    if (isTildePage) {
+        // Tilde page: all ~ like a blank Vim buffer
+        for (let i = 0; i < count; i++) {
+            lines.push(`<div class="text-nvim-blue font-bold leading-5">~</div>`);
+        }
+    } else {
+        // Content page: show absolute line numbers with current line highlighted
+        // and relative distance dimmed — like `number + relativenumber` in Vim
+        for (let i = 1; i <= count; i++) {
+            const isCurrentLine = i === currentLine;
+            const lineNum =
+                isCurrentLine ?
+                    String(i).padStart(3) // absolute on current
+                    : String(Math.abs(i - currentLine)).padStart(3); // relative elsewhere
+
+            const color =
+                isCurrentLine ?
+                    "text-nvim-fg font-bold" // bright + bold on current line
+                    : "text-nvim-gray"; // dim on all others
+
+            lines.push(`<div class="${color} leading-5">${lineNum}</div>`);
+        }
+    }
+
+    gutter.innerHTML = lines.join("");
+}
+
+function onScroll() {
+    const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+    const totalScrollLines =
+        scrollable > 0 ? Math.ceil(scrollable / LINE_HEIGHT) : 0;
+    totalLines = lineCount() + totalScrollLines;
+    currentLine = Math.max(1, Math.round(window.scrollY / LINE_HEIGHT) + 1);
+    render();
+}
+
+// Re-render on resize (line count changes)
+const resizeObserver = new ResizeObserver(render);
+resizeObserver.observe(document.documentElement);
+
+window.addEventListener("scroll", onScroll, { passive: true });
+
+// Initial render
+onScroll();
+
+// Astro View Transitions — re-init after page swap
+document.addEventListener("astro:page-load", () => {
+    onScroll();
+});
+</script>
