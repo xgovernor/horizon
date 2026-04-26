@@ -4,13 +4,17 @@ import tailwindcss from "@tailwindcss/vite";
 
 import mdx from "@astrojs/mdx";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig( {
   compressHTML: true,
+
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "hover",
   },
+
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -18,5 +22,7 @@ export default defineConfig( {
       minify: true,
     },
   },
+
   integrations: [mdx()],
+  adapter: cloudflare(),
 });
