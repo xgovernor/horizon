@@ -1,6 +1,8 @@
 {
 	"compatibility_date": "2026-04-26",
-	"compatibility_flags": ["global_fetch_strictly_public"],
+	"compatibility_flags": [
+		"global_fetch_strictly_public"
+	],
 	"name": "horizon",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
@@ -9,5 +11,12 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "horizon",
+			"database_id": "f5fc8b35-a116-4215-a440-9c5b2c7e5f92"
+		}
+	]
 }
